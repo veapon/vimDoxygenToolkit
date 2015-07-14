@@ -820,11 +820,11 @@ function! <SID>DoxygenCommentFunc()
 
   " display version string if it had set " Test versionString variable
   let l:sinceString = ""
-  if exists("g:DoxygenToolkit_versionString")
+  if( exists("g:DoxygenToolkit_versionString") && g:DoxygenToolkit_versionString != "")
     "let g:DoxygenToolkit_versionString = input("Enter version string : ")
     let l:sinceString = g:DoxygenToolkit_versionString
+    exec "normal o".s:interCommentTag.g:DoxygenToolkit_sinceTag.l:sinceString
   endif
-  exec "normal o".s:interCommentTag.g:DoxygenToolkit_sinceTag.l:sinceString
 
   " date string
   let l:date = strftime("%Y-%m-%d")
