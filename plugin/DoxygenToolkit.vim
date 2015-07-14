@@ -768,6 +768,11 @@ function! <SID>DoxygenCommentFunc()
   mark d
   exec "normal o".s:interCommentTag.g:DoxygenToolkit_descTag
 
+  " Author
+  if( g:DoxygenToolkit_showFuncAuthor =~ "yes" && g:DoxygenToolkit_authorName != "" )
+    exec "normal o".s:interCommentTag.g:DoxygenToolkit_authorTag.g:DoxygenToolkit_authorName
+  endif
+
   " Arguments/parameters
   if( g:DoxygenToolkit_compactDoc =~ "yes" )
     let s:insertEmptyLine = 0
@@ -821,7 +826,7 @@ function! <SID>DoxygenCommentFunc()
   endif
   exec "normal o".s:interCommentTag.g:DoxygenToolkit_sinceTag.l:sinceString
 
-  " data string
+  " date string
   let l:date = strftime("%Y-%m-%d")
   exec "normal o".s:interCommentTag.g:DoxygenToolkit_createTag.l:date
 
